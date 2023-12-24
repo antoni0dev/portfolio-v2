@@ -4,7 +4,7 @@ export const lightTheme = {
   fontFamily: "'Source Sans Pro', sans-serif",
   bodyRgba: '252, 246, 244',
   textRgba: '0,0,0',
-  homepageOverlayBg: '#000',
+  homepageOverlayBg: '#000'
 };
 
 export const darkTheme = {
@@ -13,5 +13,5 @@ export const darkTheme = {
   fontFamily: "'Source Sans Pro', sans-serif",
   bodyRgba: '0,0,0',
   textRgba: '252, 246, 244',
-  homepageOverlayBg: '#FCF6F4',
+  homepageOverlayBg: '#FCF6F4'
 };

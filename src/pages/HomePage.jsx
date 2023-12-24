@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { PATHS, EMAIL } from '../lib/constants';
-import IntroPowerButton from '../components/IntroPowerButton';
+import PowerButton from '../components/PowerButton';
 import Logo from '../components/Logo';
 import SocialIcons from '../components/SocialIcons';
 import StyledLink from '../components/StyledLink';
@@ -12,7 +12,7 @@ import { motion } from 'framer-motion';
 
 const linkAnimationSettings = {
   whileHover: { scale: 1.1 },
-  whileTap: { scale: 0.9 },
+  whileTap: { scale: 0.9 }
 };
 
 const HomePage = () => {
@@ -22,7 +22,7 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <StyledPowerButton
+      <PowerButton
         opacity={!isHeroShown ? 1 : 0}
         onClick={handleToggleIsHeroShown}
       />
@@ -90,14 +90,6 @@ const WorkLink = styled(StyledLink)`
   left: 50px;
   transform: translate(-50%, -50%) rotate(-90deg);
   transition: color 4s ease;
-`;
-
-const StyledPowerButton = styled(IntroPowerButton)`
-  position: fixed;
-  top: 32px;
-  left: 50%;
-  opacity: ${(props) => props.opacity};
-  transition: opacity 0.5s ease 0.5s;
 `;
 
 const WhoAmIOverlay = styled.div`

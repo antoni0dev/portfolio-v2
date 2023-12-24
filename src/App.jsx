@@ -9,7 +9,9 @@ const App = () => {
   const { theme } = useThemeContext();
 
   return (
-    <StyledThemeProvider theme={theme == THEMES.light ? lightTheme : darkTheme}>
+    <StyledThemeProvider
+      theme={theme === THEMES.light ? lightTheme : darkTheme}
+    >
       <Outlet />
       <GlobalStyle />
     </StyledThemeProvider>

@@ -3,26 +3,29 @@ import GithubSVG from './svg/GithubSVG';
 import FacebookSVG from './svg/FacebookSVG';
 import TwitterSVG from './svg/TwitterSVG';
 import { SOCIAL_URLS } from '../lib/constants';
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 const SOCIAL_LINKS = [
   {
     url: SOCIAL_URLS.github,
-    icon: GithubSVG,
+    icon: GithubSVG
   },
   {
     url: SOCIAL_URLS.linkedin,
-    icon: TwitterSVG,
+    icon: TwitterSVG
   },
   {
     url: SOCIAL_URLS.facebook,
-    icon: FacebookSVG,
-  },
+    icon: FacebookSVG
+  }
 ];
 
-const SocialIcons = ({ fillColor }) => {
+const SocialIcons = ({ fillColor = '', linePosition = 'bottom', ...rest }) => {
+  const theme = useTheme();
+
   return (
-    <Wrapper>
+    <Wrapper {...rest}>
+      {linePosition === 'top' && <Line fillColor={fillColor || theme.text} />}
       {SOCIAL_LINKS.map(({ url, icon: Icon }, index) => (
         <StyledLink key={index} to={url} target="_blank">
           <Icon
@@ -30,13 +33,15 @@ const SocialIcons = ({ fillColor }) => {
             height={25}
             fill={fillColor}
             style={{
-              transition: 'fill 2s ease',
+              transition: 'fill 2s ease'
             }}
           />
         </StyledLink>
       ))}
 
-      <Line fillColor={fillColor} />
+      {linePosition === 'bottom' && (
+        <Line fillColor={fillColor || theme.text} />
+      )}
     </Wrapper>
   );
 };

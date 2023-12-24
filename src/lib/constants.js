@@ -3,24 +3,24 @@ export const PATHS = {
   about: '/about',
   blog: '/blog',
   skills: '/skills',
-  work: '/work',
+  work: '/work'
 };
 
 export const PUBLIC_URLS = {
   github: 'https://github.com/antoni0dev',
   linkedin: 'https://www.linkedin.com/in/antonio-simeonov/',
-  facebook: 'https://www.facebook.com/t0neyy',
+  facebook: 'https://www.facebook.com/t0neyy'
 };
 
 export const SOCIAL_URLS = {
-  url: PUBLIC_URLS.github,
-  url: PUBLIC_URLS.linkedin,
-  url: PUBLIC_URLS.facebook,
+  github: PUBLIC_URLS.github,
+  linkedin: PUBLIC_URLS.linkedin,
+  facebook: PUBLIC_URLS.facebook
 };
 
 export const EMAIL = 'antonios.consult@gmail.com';
 
 export const THEMES = {
   light: 'light',
-  dark: 'dark',
+  dark: 'dark'
 };
