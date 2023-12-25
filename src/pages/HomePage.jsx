@@ -51,7 +51,7 @@ const HomePage = () => {
 
       <Footer>
         <motion.h2 {...linkAnimationSettings}>
-          <AboutLink isDarkBackground={isHeroShown} to={PATHS.about}>
+          <AboutLink isdarkbackground={isHeroShown} to={PATHS.about}>
             About
           </AboutLink>
         </motion.h2>
@@ -107,7 +107,7 @@ const WhoAmIOverlay = styled.div`
 
 const AboutLink = styled(StyledLink)`
   color: ${(props) =>
-    props.isDarkBackground ? props.theme.body : props.theme.text};
+    props.isdarkbackground ? props.theme.body : props.theme.text};
   transition: color 4s ease;
 `;
 

@@ -6,9 +6,8 @@ import AnchorSVG from './svg/AnchorSVG';
 const Anchor = () => {
   const ref = useRef(null);
   const [anchorCableLength, setAnchorCableLength] = useState(
-    (window.innerHeight - 70) / 25
+    Math.round((window.innerHeight - 70) / 25)
   );
-  console.log('anchorCableLength', anchorCableLength);
 
   useEffect(() => {
     const handleAdjustAnchorCableLength = () =>
