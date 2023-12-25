@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { PATHS, EMAIL } from '../lib/constants';
-import PowerButton from '../components/PowerButton';
 import Logo from '../components/Logo';
 import SocialIcons from '../components/SocialIcons';
 import StyledLink from '../components/StyledLink';
@@ -9,9 +8,18 @@ import { useState } from 'react';
 import { lightTheme, darkTheme } from '../themes/theme';
 import Hero from '../components/Hero';
 import { motion } from 'framer-motion';
+import SoundWidget from '../components/SoundWidget';
 
 const linkAnimationSettings = {
   whileHover: { scale: 1.1 },
+  whileTap: { scale: 0.9 }
+};
+
+const connectLinkConfig = {
+  whileHover: {
+    scale: 1.1,
+    transition: { duration: 0.3 }
+  },
   whileTap: { scale: 0.9 }
 };
 
@@ -22,22 +30,21 @@ const HomePage = () => {
 
   return (
     <Wrapper>
-      <PowerButton
-        opacity={!isHeroShown ? 1 : 0}
-        onClick={handleToggleIsHeroShown}
-      />
       <HeroTriggerButton
         isClicked={isHeroShown}
         onClick={handleToggleIsHeroShown}
       />
       <WhoAmIOverlay isShown={isHeroShown} />
-      <StyledLogo color={isHeroShown ? darkTheme.text : lightTheme.text} />
+      <Navbar>
+        <StyledLogo color={isHeroShown ? darkTheme.text : lightTheme.text} />
+        <SoundWidget />
+        <ConnectLink target="_blank" rel="noreferrer" href={`mailto:${EMAIL}`}>
+          <motion.h2 {...linkAnimationSettings}>Say hi...</motion.h2>
+        </ConnectLink>
+      </Navbar>
       {isHeroShown && <Hero />}
 
       {/* Links and Socials */}
-      <ContactLink target="_blank" to={{ pathname: `mailto:${EMAIL}` }}>
-        <motion.h2 {...linkAnimationSettings}>Say hi...</motion.h2>
-      </ContactLink>
       <BlogLink to={PATHS.blog}>
         <motion.h2 {...linkAnimationSettings}>Blog</motion.h2>
       </BlogLink>
@@ -70,16 +77,30 @@ const Wrapper = styled.div`
   padding: 32px;
 `;
 
-const ContactLink = styled(StyledLink)`
-  position: absolute;
-  top: 32px;
-  right: calc(16px + 1vh);
+const Navbar = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+const ConnectLink = styled(motion.a)`
+  color: inherit;
+  text-decoration: none;
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: bold;
+  margin-left: auto;
+  border-bottom: 2px solid ${(props) => props.text};
+  border-radius: 2px;
+
+  & > * {
+    font-family: inherit;
+  }
 `;
 
 const BlogLink = styled(StyledLink)`
   position: absolute;
   top: 50%;
-  right: 40px;
+  right: 35px;
   transform: rotate(90deg) translate(-50%, -50%);
 `;
 
@@ -87,7 +108,7 @@ const WorkLink = styled(StyledLink)`
   color: ${(props) => props.color};
   position: absolute;
   top: 50%;
-  left: 50px;
+  left: 40px;
   transform: translate(-50%, -50%) rotate(-90deg);
   transition: color 4s ease;
 `;
@@ -119,7 +140,7 @@ const StyledLogo = styled(Logo)`
 const Footer = styled.footer`
   position: fixed;
   width: 100%;
-  bottom: 16px;
+  bottom: 32px;
 
   display: flex;
   justify-content: space-evenly;

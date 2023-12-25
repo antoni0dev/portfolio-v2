@@ -1,6 +1,6 @@
 import Logo from '../components/Logo';
 import SocialIcons from '../components/SocialIcons';
-import PowerButton from '../components/PowerButton';
+import BackButton from '../components/BackButton';
 import Particle from '../components/Particle';
 import styled, { keyframes, useTheme } from 'styled-components';
 import config from '../config/particlesjs-config.json';
@@ -14,8 +14,8 @@ const AboutPage = () => {
       <Particle config={config} />
       <StyledLogo />
       <SocialIcons fillColor={theme.body} />
-      <PowerButton />
       <AstronautImage src={astronautImg} alt="astronaut in space" />
+      <BackButton fill={theme.body} />
       <ContentWrapper>
         <p>
           I&apos;m a front-end developer located in Austria. I love to create
@@ -50,7 +50,7 @@ const astronautFloatConfig = keyframes`
 
 const AstronautImage = styled.img`
   position: absolute;
-  top: 13%;
+  top: 5%;
   right: 5%;
   width: 25%;
   animation: ${astronautFloatConfig} 3s ease-in-out infinite;
@@ -63,12 +63,11 @@ const StyledLogo = styled(Logo)`
 const ContentWrapper = styled.div`
   position: absolute;
   left: 15%;
-  top: 20%;
+  top: 32%;
   border: 1px solid ${(props) => props.theme.body};
   color: ${(props) => props.theme.body};
   padding: 64px;
   width: 50vw;
-  max-height: 70vh;
   line-height: 1.5;
   font-size: 1.4rem;
   font-family: 'Ubuntu Mono', monospace;

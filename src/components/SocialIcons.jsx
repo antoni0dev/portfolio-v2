@@ -60,7 +60,7 @@ const Wrapper = styled.div`
 
 const Line = styled.span`
   width: 2px;
-  height: 128px;
+  height: 50px;
   background-color: ${(props) => props.fillColor};
   transition: background-color 6s ease;
 `;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import blogPageCoverImage from '/images/articleCover.jpg';
 
 import Logo from '../components/Logo';
-import PowerButton from '../components/PowerButton';
+import BackButton from '../components/BackButton';
 import SocialIcons from '../components/SocialIcons';
 import BlogPost from '../components/BlogPost';
 import { Blogs } from '../data/BlogData';
@@ -22,7 +22,6 @@ const BlogPage = () => {
     const handleResize = () => setIsViewportSmall(window.innerWidth < 800);
 
     window.addEventListener('resize', handleResize);
-
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -30,7 +29,7 @@ const BlogPage = () => {
     <Wrapper>
       <Overlay>
         <Logo />
-        <PowerButton />
+        <StyledBackButton />
         {isMobileViewport ? (
           <StyledSocialIcons linePosition="top" />
         ) : (
@@ -63,8 +62,12 @@ const Wrapper = styled.div`
   min-height: 100svh;
 `;
 
+const StyledBackButton = styled(BackButton)`
+  right: 90px;
+`;
+
 const Overlay = styled.div`
-  background-color: ${(props) => `rgba(${props.theme.bodyRgba}, 0.8)`};
+  background-color: ${(props) => `${props.theme.bodyRgba}`};
   width: 100%;
   min-height: 100svh;
   position: relative;
@@ -75,7 +78,7 @@ const MainAreaWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 160px;
+  margin-top: 32px;
 `;
 
 const BlogPostsWrapper = styled.div`

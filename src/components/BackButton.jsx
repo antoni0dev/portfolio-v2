@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-import PowerButtonSVG from './svg/PowerButtonSVG';
+import BackButtonSVG from './svg/BackButtonSVG';
 import { Link } from 'react-router-dom';
 import { PATHS } from '../lib/constants';
 
-const PowerButton = ({ to = PATHS.root, style, ...rest }) => {
+const BackButton = ({ to = PATHS.root, style, fill, ...rest }) => {
   return (
     <Wrapper to={to} style={style} {...rest}>
-      <PowerButtonSVG />
+      <BackButtonSVG fill={fill} />
     </Wrapper>
   );
 };
@@ -15,12 +15,11 @@ const PowerButton = ({ to = PATHS.root, style, ...rest }) => {
 const Wrapper = styled(Link)`
   transform: translate(-50%, 0);
   color: inherit;
-  background-color: #fcf6f4;
+
   padding: 5px;
   border-radius: 50%;
-  border: 1px solid #000;
-  width: ${(props) => props.width || 35 + 'px'};
-  height: ${(props) => props.height || 35 + 'px'};
+  width: ${(props) => props.width || 45 + 'px'};
+  height: ${(props) => props.height || 45 + 'px'};
 
   display: flex;
   justify-content: center;
@@ -30,14 +29,9 @@ const Wrapper = styled(Link)`
   // Positioning defaults
   position: fixed;
   top: 32px;
-  left: 50%;
+  right: 32px;
   opacity: ${(props) => props.opacity};
   transition: opacity 0.5s ease 0.5s;
-
-  &:hover {
-    background-color: inherit;
-    color: inherit;
-  }
 `;
 
-export default PowerButton;
+export default BackButton;

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import FullStackSVG from '../components/svg/FullStackSVG';
 import DeveloperSVG from '../components/svg/DeveloperSVG';
 import Logo from '../components/Logo';
-import PowerButton from '../components/PowerButton';
+import BackButton from '../components/BackButton';
 import Particle from '../components/Particle';
 import particleConfig from '../config/particlesjs-config-light.json';
 
@@ -41,7 +41,7 @@ const SkillsPage = () => {
       <Wrapper>
         <Particle config={particleConfig} />
         <Logo />
-        <PowerButton />
+        <BackButton />
         <ContentWrapper>
           <Main>
             {skills.map(
