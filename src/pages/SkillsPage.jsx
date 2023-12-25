@@ -4,6 +4,7 @@ import DeveloperSVG from '../components/svg/DeveloperSVG';
 import Logo from '../components/Logo';
 import PowerButton from '../components/PowerButton';
 import Particle from '../components/Particle';
+import particleConfig from '../config/particlesjs-config-light.json';
 
 const skills = [
   {
@@ -38,7 +39,7 @@ const SkillsPage = () => {
   return (
     <>
       <Wrapper>
-        <Particle />
+        <Particle config={particleConfig} />
         <Logo />
         <PowerButton />
         <ContentWrapper>
