@@ -24,3 +24,15 @@ export const THEMES = {
   light: 'light',
   dark: 'dark'
 };
+
+export const animationConfig = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+
+    transition: {
+      staggerChildren: 3,
+      duration: 0.8
+    }
+  }
+};

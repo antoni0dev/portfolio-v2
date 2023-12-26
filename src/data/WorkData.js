@@ -1,62 +1,86 @@
 export const Work = [
   {
     id: 1,
-    name: 'Agency Landing Page',
+    name: 'Nexo Mobile and Web Apps',
     description:
-      'It is build on top of the React JS, with styledComponents and GSAP for smooth scrolling animations.',
-    tags: ['react', 'gsap', 'styledComponents'],
-
-    demo: 'https://agency-website-eta.vercel.app/',
-    github: 'https://github.com/codebucks27/Agency-website'
+      'Performant React applications built with scalability and optimization in mind.',
+    tags: [
+      'react',
+      'react native',
+      'styled-components',
+      'redux toolkit',
+      'framer-motion',
+      'jest'
+    ],
+    github: '',
+    demo: 'https://platform.nexo.com/register'
   },
   {
     id: 2,
-    name: 'Job listing website',
+    name: 'BlueMail PC, Mac and Mobile Apps',
     description:
-      'A Job listing website build in ReactJS. With searching and filtering functionalities.',
-    tags: ['react', 'sass'],
-
-    demo: 'http://react-job-listing-website.codebucks27.vercel.app/',
-    github: 'https://github.com/codebucks27/react-job-listing-website'
+      'A feature-rich email management app including a GEM AI auto email generator.',
+    tags: ['react', 'react native', 'Material UI', 'redux', 'jest'],
+    github: '',
+    demo: 'https://bluemail.me/'
   },
   {
     id: 3,
-    name: 'Dev.to Clone',
+    name: 'ProShop',
     description:
-      'A clone of Dev.to build using ReactJS. With realtime fetching of articles from dev.to using API.',
-    tags: ['react', 'api', 'sass'],
+      'An online eCommerce website for different technological devices.',
+    tags: [
+      'node',
+      'express',
+      'mongodb',
+      'react',
+      'typescript',
+      'react-bootstrap',
+      'redux toolkit',
+      'rtk query',
+      'zod',
+      'react-hook-form'
+    ],
 
-    demo: 'http://devto-clone-codebucks27.vercel.app/',
-    github: 'https://github.com/codebucks27/devto-clone'
+    demo: 'https://proshop-59ue.onrender.com',
+    github: 'https://github.com/antoni0dev/fullstack-mern-ecommerce-proj'
   },
   {
     id: 4,
-    name: 'Sidebar Menu',
+    name: 'EasyPay Payment Platform - Money Transfers and Payments',
     description:
-      'A cool looking sidebar menu build using ReactJS and styledComponents.It has really smooth animations.',
-    tags: ['react', 'styledComponents', 'react-router'],
-
-    demo: 'https://react-sidebar.vercel.app/',
-    github: 'https://github.com/codebucks27/react-sidebar'
+      'One of the most popular online payment systems in Bulgaria. Partnering with Ria. Level 1 Service Provider.',
+    tags: ['react', 'react native', 'sass', 'redux ', 'jest'],
+    github: '',
+    demo: 'https://www.epay.bg/v3main/front'
   },
   {
     id: 5,
-    name: 'Todo App(React + Redux)',
+    name: 'Netflix Clone',
     description:
-      'A todo app build using Redux-toolkit and framer-motion for smooth animations.',
-    tags: ['react', 'redux', 'framer-motion'],
+      'A 1:1 custom built copy of the popular Netflix website with authentication and global state management.',
+    tags: ['next.js', 'tailwind-css', 'react-router', 'zustand'],
 
-    demo: 'http://react-redux-todo-app-git-main-codebucks27.vercel.app/',
-    github: 'https://github.com/codebucks27/React-Redux-Todo-App'
+    demo: 'https://netflix2-0-next-proj.vercel.app/',
+    github: 'https://github.com/antoni0dev/netflix2.0-next-proj'
   },
   {
     id: 6,
-    name: 'Responsive Navigation Menu',
+    name: 'Crypto Market Tracker',
+    description: 'A live crypto market tracker.',
+    tags: ['next.js', 'tailwind-css', 'auth'],
+
+    demo: 'https://cryptoapi-clone.web.app/',
+    github: 'https://github.com/antoni0dev/livecrypto-react-proj'
+  },
+  {
+    id: 7,
+    name: 'Modern Restaurant Website',
     description:
-      'A reponsive navbar menu component in ReactJS with react-router functionalities. Built from scratch.',
+      'A responsive and personally designed restaurant website built with strong focus on UI/UX.',
     tags: ['react', 'react-router', 'css'],
 
-    demo: 'http://react-responsive-navbar-codebucks27.vercel.app/',
-    github: 'https://github.com/codebucks27/React-responsive-navbar'
+    demo: 'https://antoni0dev.github.io/modern-ui-ux-restaurant-react-proj/',
+    github: 'https://github.com/antoni0dev/modern-ui-ux-restaurant-react-proj'
   }
 ];

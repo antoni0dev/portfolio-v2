@@ -5,12 +5,14 @@ import Particle from '../components/Particle';
 import styled, { keyframes, useTheme } from 'styled-components';
 import config from '../config/particlesjs-config.json';
 import astronautImg from '/images/spaceman.png';
+import { motion } from 'framer-motion';
+import { animationConfig } from '../lib/constants';
 
 const AboutPage = () => {
   const theme = useTheme();
 
   return (
-    <Wrapper>
+    <Wrapper variants={animationConfig} initial="hidden" animate="show">
       <Particle config={config} />
       <StyledLogo />
       <SocialIcons fillColor={theme.body} />
@@ -18,24 +20,33 @@ const AboutPage = () => {
       <BackButton fill={theme.body} />
       <ContentWrapper>
         <p>
-          I&apos;m a front-end developer located in Austria. I love to create
-          and optimize complex web and mobile apps.
+          I am a Full Stack Developer with a rich history in the MERN stack,
+          bringing over 9 years of experience in developing advanced web and
+          mobile applications. Based in Austria, my career has been marked by
+          engagements with leading tech firms including Nexo, Bluemail, and
+          EasyPay.
         </p>
         <p>
-          Thriving as an independent freelancer and avid blogger, I immerse
-          myself in creating impactful projects and sharing insights through my
-          writing.
+          In my role, I blend creativity with technical acumen, focusing on
+          delivering high-quality, efficient solutions. My portfolio spans a
+          range of complex projects, showcasing a balance of front-end finesse
+          and robust back-end functionalities.
         </p>
         <p>
-          I firmly believe in the artistry of work infused with consciousness
-          and dedication. You can connect with me via social links.
+          As an independent freelancer and a thought leader in the tech space, I
+          contribute insights through my blogs, sharing lessons and trends in
+          full stack development.
+        </p>
+        <p>
+          Connect with me to discuss innovative solutions or for insights into
+          modern development practices in the evolving tech landscape.
         </p>
       </ContentWrapper>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   padding: 32px;
   height: 100svh;
   background-color: ${(props) => props.theme.body};
@@ -63,7 +74,7 @@ const StyledLogo = styled(Logo)`
 const ContentWrapper = styled.div`
   position: absolute;
   left: 15%;
-  top: 32%;
+  top: 18%;
   border: 1px solid ${(props) => props.theme.body};
   color: ${(props) => props.theme.body};
   padding: 64px;

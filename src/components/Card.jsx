@@ -1,4 +1,4 @@
-import React, { Fragment, forwardRef } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import GithubSVG from './svg/GithubSVG';
 import { motion } from 'framer-motion';
@@ -38,7 +38,16 @@ const Card = ({
         <Link href={demo} target="_blank">
           Visit
         </Link>
-        <Git href={github} target="_blank">
+        <Git
+          isValidHref={github}
+          href={github ? github : '#'}
+          onClick={(e) => {
+            if (!github) {
+              e.preventDefault();
+            }
+          }}
+          target={'_blank'}
+        >
           <GithubSVG width={30} height={30} />
         </Git>
       </Footer>
@@ -103,7 +112,7 @@ const Tags = styled.div`
 `;
 
 const Tag = styled.span`
-  margin-right: 1rem;
+  margin-right: 8px;
   font-size: calc(0.8em + 0.3vw);
 `;
 
@@ -115,12 +124,46 @@ const Footer = styled.footer`
 const Git = styled.a`
   color: inherit;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &:hover {
+    color: ${(props) => (props.isValidHref ? 'inherit' : 'gray')};
+    cursor: ${(props) => (props.isValidHref ? 'pointer' : 'not-allowed')};
+
+    &::after {
+      content: ${(props) => (props.isValidHref ? '' : '"Restricted access"')};
+      content: ${(props) =>
+        props.isDeploying
+          ? '"Please wait a few seconds. The app spins down on idle and needs to redeploy."'
+          : ''};
+      position: absolute;
+      top: -22px; // Position of the tooltip
+      white-space: nowrap;
+      padding: 5px 10px;
+      background-color: gray;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.8em;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+    }
+
+    &::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
 
   ${Wrapper}:hover & {
     & > * {
-      fill: ${(props) => props.theme.text};
+      fill: ${(props) => (props.isValidHref ? props.theme.text : 'gray')};
     }
   }
 `;
-
 export default Card;

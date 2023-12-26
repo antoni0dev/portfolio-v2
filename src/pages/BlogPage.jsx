@@ -6,12 +6,25 @@ import Logo from '../components/Logo';
 import BackButton from '../components/BackButton';
 import SocialIcons from '../components/SocialIcons';
 import BlogPost from '../components/BlogPost';
-import { Blogs } from '../data/BlogData';
 import Anchor from '../components/Anchor';
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
+import { animationConfig } from '../lib/constants';
 
-// TODO: add blogs
-const blogs = Blogs;
+const blogs = [];
+
+const missingBlogPostsConfig = {
+  animate: {
+    scale: [1, 1.05, 1, 1.05, 1],
+    x: [0, 15, -15, 15, 0],
+    y: [0, 15, -15, 15, 0],
+    transition: {
+      duration: 10,
+      ease: 'easeInOut',
+      loop: Infinity
+    }
+  }
+};
 
 const BlogPage = () => {
   const [isMobileViewport, setIsViewportSmall] = useState(
@@ -26,7 +39,7 @@ const BlogPage = () => {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper variants={animationConfig} initial="hidden" animate="show">
       <Overlay>
         <Logo />
         <StyledBackButton />
@@ -38,7 +51,18 @@ const BlogPage = () => {
         {!isMobileViewport && <Anchor />}
         <MainAreaWrapper>
           {blogs.length === 0 ? (
-            <h1>{'Blog posts to be added soon :)'}</h1>
+            <motion.h1
+              style={{
+                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
+                marginTop: 250,
+                fontSize: '2rem'
+              }}
+              variants={missingBlogPostsConfig}
+              initial={{ opacity: 0.7, x: -200 }}
+              animate="animate"
+            >
+              {'Blog posts to be added soon...'}
+            </motion.h1>
           ) : (
             <BlogPostsWrapper>
               {blogs.map((blog) => (
@@ -52,7 +76,7 @@ const BlogPage = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   background-image: url(${blogPageCoverImage});
   background-size: cover;
   background-repeat: no-repeat;
@@ -60,6 +84,7 @@ const Wrapper = styled.div`
   background-position: center;
   width: 100%;
   min-height: 100svh;
+  height: 150vh;
 `;
 
 const StyledBackButton = styled(BackButton)`
@@ -69,6 +94,7 @@ const StyledBackButton = styled(BackButton)`
 const Overlay = styled.div`
   background-color: ${(props) => `${props.theme.bodyRgba}`};
   width: 100%;
+  height: 100%;
   min-height: 100svh;
   position: relative;
   padding: 32px;

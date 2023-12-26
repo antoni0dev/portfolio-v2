@@ -1,43 +1,76 @@
 import styled from 'styled-components';
-import { PATHS, EMAIL } from '../lib/constants';
+import { PATHS, EMAIL, animationConfig } from '../lib/constants';
 import Logo from '../components/Logo';
 import SocialIcons from '../components/SocialIcons';
 import StyledLink from '../components/StyledLink';
 import HeroTriggerButton from '../components/HeroTriggerButton';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { lightTheme, darkTheme } from '../themes/theme';
 import Hero from '../components/Hero';
 import { motion } from 'framer-motion';
 import SoundWidget from '../components/SoundWidget';
+import { useMusicContext } from '../providers/MusicProvider';
 
 const linkAnimationSettings = {
   whileHover: { scale: 1.1 },
   whileTap: { scale: 0.9 }
 };
 
-const connectLinkConfig = {
-  whileHover: {
-    scale: 1.1,
-    transition: { duration: 0.3 }
-  },
-  whileTap: { scale: 0.9 }
+const soundWidgetConfig = {
+  hidden: { scale: 4, rotate: -580, opacity: 0, color: '#666' },
+  visible: {
+    scale: 1,
+    rotate: 0,
+    opacity: 1,
+    color: '#f00',
+    transition: {
+      duration: 3,
+      type: 'spring',
+      stiffness: 100,
+      damping: 20
+    }
+  }
 };
 
 const HomePage = () => {
   const [isHeroShown, setIsHeroShown] = useState(false);
+  const { toggleIsPlaying, isPlaying } = useMusicContext();
 
   const handleToggleIsHeroShown = () => setIsHeroShown(!isHeroShown);
 
+  const handleHeroTriggerButtonClick = () => {
+    handleToggleIsHeroShown();
+
+    if (!isPlaying) {
+      toggleIsPlaying();
+    }
+  };
+
+  // Trigger a redeploy of a shutted-down project deployed on Render.js
+  useEffect(() => {
+    (async () => {
+      await fetch('https://proshop-59ue.onrender.com', { mode: 'no-cors' });
+    })();
+  }, []);
+
   return (
-    <Wrapper>
+    <Wrapper variants={animationConfig} initial="hidden" animate="show">
       <HeroTriggerButton
         isClicked={isHeroShown}
-        onClick={handleToggleIsHeroShown}
+        onClick={handleHeroTriggerButtonClick}
       />
       <WhoAmIOverlay isShown={isHeroShown} />
       <Navbar>
         <StyledLogo color={isHeroShown ? darkTheme.text : lightTheme.text} />
-        <SoundWidget />
+        {!isHeroShown && (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={soundWidgetConfig}
+          >
+            <SoundWidget />
+          </motion.div>
+        )}
         <ConnectLink target="_blank" rel="noreferrer" href={`mailto:${EMAIL}`}>
           <motion.h2 {...linkAnimationSettings}>Say hi...</motion.h2>
         </ConnectLink>
@@ -65,12 +98,21 @@ const HomePage = () => {
         <motion.h2 {...linkAnimationSettings}>
           <StyledLink to={PATHS.skills}>Skills</StyledLink>
         </motion.h2>
+        {isHeroShown && (
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={soundWidgetConfig}
+          >
+            <SoundWidget />
+          </motion.div>
+        )}
       </Footer>
     </Wrapper>
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   background-color: ${(props) => props.theme.body};
   height: 100%;
   position: relative;

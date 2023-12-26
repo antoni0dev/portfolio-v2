@@ -16,11 +16,11 @@ const playKeyframe = keyframes`
   }
 `;
 
-const SoundWidget = () => {
+const SoundWidget = (props) => {
   const { isPlaying, toggleIsPlaying } = useMusicContext();
 
   return (
-    <Wrapper onClick={toggleIsPlaying}>
+    <Wrapper onClick={toggleIsPlaying} {...props}>
       {[...Array.from({ length: 6 })].map((_, index) => (
         <Line key={index} isPlaying={isPlaying} />
       ))}

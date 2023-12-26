@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 const animationSettings = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  transition: { type: 'spring', duration: 3, delay: 1 },
+  transition: { type: 'spring', duration: 3, delay: 1 }
 };
 
 const Hero = () => {
@@ -16,10 +16,11 @@ const Hero = () => {
       </ProfileImageWrapper>
       <IntroductionWrapper {...animationSettings}>
         <h1>Hi, </h1>
-        <h2>I'm Antonio</h2>
-        <h4>I am a seasoned senior frontend developer and contractor.</h4>
+        <h2>I&apos;m Antonio</h2>
+        <h4>Senior Software Developer and Contractor based in Austria</h4>
         <h6>
-          I have experience in companies like Nexo, BlueMail and many others.
+          I have been igniting innovation at companies like Nexo, BlueMail, and
+          other tech giants for 9+ Years.
         </h6>
       </IntroductionWrapper>
     </Wrapper>
@@ -92,7 +93,8 @@ const ProfileImageWrapper = styled(motion.div)`
 `;
 
 const ProfileImg = styled.img`
-  height: 98%;
+  height: 99%;
+  margin-bottom: -2px;
 `;
 
 export default Hero;

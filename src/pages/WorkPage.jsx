@@ -7,21 +7,10 @@ import { useEffect, useRef } from 'react';
 import YinYanSVG from '../components/svg/YinYangSVG';
 import Card from '../components/Card';
 import { motion } from 'framer-motion';
+import { animationConfig } from '../lib/constants';
 
 // TODO: add relevant work
 const works = Work;
-
-const sliderConfig = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-
-    transition: {
-      staggerChildren: 2,
-      duration: 2
-    }
-  }
-};
 
 const WorkPage = () => {
   const theme = useTheme();
@@ -67,7 +56,7 @@ const WorkPage = () => {
       <StyledLogo />
       <HorizontalSlider
         ref={sliderRef}
-        variants={sliderConfig}
+        variants={animationConfig}
         initial="hidden"
         animate="show"
       >
@@ -89,7 +78,7 @@ const WorkPage = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   height: 100%;
   padding: 32px;
   background-color: ${(props) => props.theme.text};

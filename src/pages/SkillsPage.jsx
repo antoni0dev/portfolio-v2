@@ -5,6 +5,8 @@ import Logo from '../components/Logo';
 import BackButton from '../components/BackButton';
 import Particle from '../components/Particle';
 import particleConfig from '../config/particlesjs-config-light.json';
+import { motion } from 'framer-motion';
+import { animationConfig } from '../lib/constants';
 
 const skills = [
   {
@@ -38,7 +40,7 @@ const skills = [
 const SkillsPage = () => {
   return (
     <>
-      <Wrapper>
+      <Wrapper variants={animationConfig} initial="hidden" animate="show">
         <Particle config={particleConfig} />
         <Logo />
         <BackButton />
@@ -81,7 +83,7 @@ const SkillsPage = () => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled(motion.div)`
   background-color: ${(props) => props.theme.body};
   min-height: 100svh;
   padding: 32px;
