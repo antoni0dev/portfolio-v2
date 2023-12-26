@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 import { PATHS, EMAIL, animationConfig } from '../lib/constants';
 import Logo from '../components/Logo';
 import SocialIcons from '../components/SocialIcons';
@@ -16,6 +16,7 @@ import {
 } from '../configs/animationConfigs';
 
 const HomePage = () => {
+  const theme = useTheme();
   const [isHeroShown, setIsHeroShown] = useState(false);
   const { toggleIsPlaying, isPlaying } = useMusicContext();
 
@@ -41,7 +42,10 @@ const HomePage = () => {
       <HeroTriggerButton
         isClicked={isHeroShown}
         onClick={handleHeroTriggerButtonClick}
-      />
+        fill={theme.text}
+      >
+        click me
+      </HeroTriggerButton>
       <WhoAmIOverlay isShown={isHeroShown} />
       <Navbar>
         <StyledLogo color={isHeroShown ? darkTheme.text : lightTheme.text} />

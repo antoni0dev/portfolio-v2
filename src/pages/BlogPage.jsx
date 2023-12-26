@@ -15,28 +15,13 @@ import { missingBlogPostsConfig } from '../configs/animationConfigs';
 const blogs = [];
 
 const BlogPage = () => {
-  const [isMobileViewport, setIsViewportSmall] = useState(
-    window.innerWidth < 800
-  );
-
-  useEffect(() => {
-    const handleResize = () => setIsViewportSmall(window.innerWidth < 800);
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
     <Wrapper variants={animationConfig} initial="hidden" animate="show">
       <Overlay>
         <Logo />
         <StyledBackButton />
-        {isMobileViewport ? (
-          <StyledSocialIcons linePosition="top" />
-        ) : (
-          <SocialIcons />
-        )}
-        {!isMobileViewport && <Anchor />}
+        <SocialIcons />
+        <Anchor />
         <MainAreaWrapper>
           {blogs.length === 0 ? (
             <EmptyBlogsHeading
@@ -71,7 +56,8 @@ const Wrapper = styled(motion.div)`
 `;
 
 const StyledBackButton = styled(BackButton)`
-  right: 90px;
+  right: 120px;
+  display: inline;
 
   @media (max-width: 400px) {
     top: 90px;
@@ -111,13 +97,6 @@ const BlogPostsWrapper = styled.div`
   @media (max-width: 600px) {
     grid-template-columns: 1fr;
   }
-`;
-
-const StyledSocialIcons = styled(SocialIcons)`
-  top: 0;
-  right: 32px;
-  bottom: initial;
-  left: initial;
 `;
 
 export default BlogPage;

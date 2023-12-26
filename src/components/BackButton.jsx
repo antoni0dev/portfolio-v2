@@ -13,7 +13,6 @@ const BackButton = ({ to = PATHS.root, style, fill, ...rest }) => {
 };
 
 const Wrapper = styled(Link)`
-  transform: translate(-50%, 0);
   color: inherit;
 
   padding: 5px;

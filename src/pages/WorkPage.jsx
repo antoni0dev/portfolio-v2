@@ -72,10 +72,15 @@ const WorkPage = () => {
           style={{ border: '1px solid black' }}
         />
       </RotationWrapper>
-      <BackButton fill={theme.body} />
+      <StyledBackButton fill={theme.body} />
     </Wrapper>
   );
 };
+
+const StyledBackButton = styled(BackButton)`
+  display: inline;
+  transform: initial;
+`;
 
 const Wrapper = styled(motion.div)`
   height: 100%;

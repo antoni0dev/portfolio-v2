@@ -1,3 +1,5 @@
+import { keyframes } from 'styled-components';
+
 export const PATHS = {
   root: '/',
   about: '/about',
@@ -37,3 +39,12 @@ export const animationConfig = {
     }
   }
 };
+
+export const heroTriggerButtonRotate = keyframes`
+  from {
+    transform: rotate(0)
+  }
+  to {
+    transform: rotate(360deg);
+  }
+`;

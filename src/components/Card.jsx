@@ -150,7 +150,7 @@ const Git = styled.a`
     cursor: ${(props) => (props.isValidHref ? 'pointer' : 'not-allowed')};
 
     &::after {
-      content: ${(props) => (props.isValidHref ? '' : '"Restricted access"')};
+      content: ${(props) => (props.isValidHref ? '' : '"Private Github repo"')};
       content: ${(props) =>
         props.isDeploying
           ? '"Please wait a few seconds. The app spins down on idle and needs to redeploy."'

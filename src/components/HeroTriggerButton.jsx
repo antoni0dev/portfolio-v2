@@ -1,21 +1,14 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import YinYangSVG from './svg/YinYangSVG';
+import { heroTriggerButtonRotate } from '../lib/constants';
 
-const rotate = keyframes`
-  from {
-    transform: rotate(0)
-  }
-  to {
-    transform: rotate(360deg);
-  }
-`;
-
-const HeroTriggerButton = ({ isClicked, onClick }) => {
+const HeroTriggerButton = ({ isClicked, onClick, fill }) => {
   return (
     <Wrapper isClicked={isClicked} onClick={onClick}>
       <YinYangSVG
         width={isClicked ? 120 : 200}
         height={isClicked ? 120 : 200}
+        fill={fill}
       />
     </Wrapper>
   );
@@ -33,7 +26,7 @@ const Wrapper = styled.button`
   transition: all 1s ease 0s;
 
   & > :first-child {
-    animation: ${rotate} infinite 1.5s linear;
+    animation: ${heroTriggerButtonRotate} infinite 1.5s linear;
   }
 
   & > :last-child {

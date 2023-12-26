@@ -32,8 +32,12 @@ const Wrapper = styled(motion.div)`
   top: 50%;
   transform: translate(-50%, -50%);
   width: 65vw;
-  height: 55vh;
+  max-height: 55vh;
   display: flex;
+
+  /* @media (max-width: ) {
+    
+  } */
 
   background:
     linear-gradient(
@@ -77,16 +81,24 @@ const IntroductionWrapper = styled(motion.div)`
     color: ${(props) => `rgba(${props.theme.textRgba},0.6)`};
   }
 
+  @media (max-width: 1250px) {
+    font-size: 1.4em;
+  }
+
   @media (max-width: 1000px) {
     font-size: 1.2em;
   }
 
-  @media (max-width: 700px) {
-    font-size: 1rem;
+  @media (max-width: 850px) {
+    font-size: 0.7rem;
   }
 
-  @media (max-width: 420px) {
-    font-size: 0.6rem;
+  @media (max-width: 550px) {
+    font-size: 0.4rem;
+  }
+
+  @media (max-width: 550px) {
+    font-size: 0.3rem;
   }
 `;
 
@@ -98,8 +110,7 @@ const ProfileImageWrapper = styled(motion.div)`
 `;
 
 const ProfileImg = styled.img`
-  height: 99%;
-  margin-bottom: -2px;
+  height: 97%;
 `;
 
 export default Hero;

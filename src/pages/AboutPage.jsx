@@ -18,7 +18,7 @@ const AboutPage = () => {
       <StyledLogo />
       <StyledSocialIcons fillColor={theme.body} />
       <AstronautImage src={astronautImg} alt="astronaut in space" />
-      <BackButton fill={theme.body} />
+      <StyledBackButton fill={theme.body} />
       <ContentWrapper>
         <p>
           I am a Full Stack Developer with a rich history in the MERN stack,
@@ -68,6 +68,11 @@ const AstronautImage = styled.img`
 
 const StyledLogo = styled(Logo)`
   color: ${(props) => props.theme.body};
+`;
+
+const StyledBackButton = styled(BackButton)`
+  display: inline;
+  transform: initial;
 `;
 
 const StyledSocialIcons = styled(SocialIcons)`
