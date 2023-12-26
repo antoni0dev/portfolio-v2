@@ -7,7 +7,6 @@ import BackButton from '../components/BackButton';
 import SocialIcons from '../components/SocialIcons';
 import BlogPost from '../components/BlogPost';
 import Anchor from '../components/Anchor';
-import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
 import { missingBlogPostsConfig } from '../configs/animationConfigs';

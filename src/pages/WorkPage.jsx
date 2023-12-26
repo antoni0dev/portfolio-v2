@@ -77,22 +77,23 @@ const WorkPage = () => {
   );
 };
 
-const StyledBackButton = styled(BackButton)`
-  display: inline;
-  transform: initial;
-`;
-
 const Wrapper = styled(motion.div)`
   height: 100%;
   padding: 32px;
   background-color: ${(props) => props.theme.text};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (max-width: 700px) {
+    padding: 16px;
+  }
 `;
 
 const HorizontalSlider = styled(motion.div)`
-  margin-top: 160px;
   display: flex;
-  gap: 64px;
-  margin-inline: 32px;
+  gap: 32px;
+  margin-inline: 16px;
   overflow-x: scroll;
   ::-webkit-scrollbar {
     display: none;
@@ -107,6 +108,11 @@ const StyledLogo = styled(Logo)`
   position: fixed;
   top: 32px;
   left: 32px;
+`;
+
+const StyledBackButton = styled(BackButton)`
+  display: inline;
+  transform: initial;
 `;
 
 const RotationWrapper = styled.div`

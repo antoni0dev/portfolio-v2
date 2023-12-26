@@ -48,7 +48,11 @@ const HomePage = () => {
       </HeroTriggerButton>
       <WhoAmIOverlay isShown={isHeroShown} />
       <Navbar>
-        <StyledLogo color={isHeroShown ? darkTheme.text : lightTheme.text} />
+        <StyledLogo
+          isClicked={isHeroShown}
+          isVertical={isHeroShown}
+          color={isHeroShown ? darkTheme.text : lightTheme.text}
+        />
         {!isHeroShown && (
           <motion.div
             initial="hidden"
@@ -58,7 +62,13 @@ const HomePage = () => {
             <SoundWidget />
           </motion.div>
         )}
-        <ConnectLink target="_blank" rel="noreferrer" href={`mailto:${EMAIL}`}>
+        <ConnectLink
+          isHeroShown={isHeroShown}
+          target="_blank"
+          rel="noreferrer"
+          href={`mailto:${EMAIL}`}
+          color={isHeroShown ? darkTheme.text : lightTheme.text}
+        >
           <motion.h2 {...linkAnimationSettings}>Say hi...</motion.h2>
         </ConnectLink>
       </Navbar>
@@ -108,6 +118,10 @@ const Wrapper = styled(motion.div)`
   height: 100%;
   position: relative;
   padding: 32px;
+
+  @media (max-width: 540px) {
+    padding: 16px;
+  }
 `;
 
 const HeroWrapper = styled(motion.div)`
@@ -135,7 +149,7 @@ const Navbar = styled.nav`
 `;
 
 const ConnectLink = styled(motion.a)`
-  color: inherit;
+  color: ${(props) => props.color};
   text-decoration: none;
   font-family: 'Ubuntu Mono', monospace;
   font-weight: bold;
@@ -188,8 +202,13 @@ const AboutLink = styled(StyledLink)`
 `;
 
 const StyledLogo = styled(Logo)`
+  position: initial;
   color: ${(props) => props.color};
   transition: color 4s ease;
+
+  @media (max-width: 450px) {
+    font-size: ${(props) => props.isClicked && '1.5rem'};
+  }
 `;
 
 const Footer = styled.footer`
