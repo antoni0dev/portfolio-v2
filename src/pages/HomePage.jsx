@@ -10,27 +10,10 @@ import Hero from '../components/Hero';
 import { motion } from 'framer-motion';
 import SoundWidget from '../components/SoundWidget';
 import { useMusicContext } from '../providers/MusicProvider';
-
-const linkAnimationSettings = {
-  whileHover: { scale: 1.1 },
-  whileTap: { scale: 0.9 }
-};
-
-const soundWidgetConfig = {
-  hidden: { scale: 4, rotate: -580, opacity: 0, color: '#666' },
-  visible: {
-    scale: 1,
-    rotate: 0,
-    opacity: 1,
-    color: '#f00',
-    transition: {
-      duration: 3,
-      type: 'spring',
-      stiffness: 100,
-      damping: 20
-    }
-  }
-};
+import {
+  linkAnimationSettings,
+  soundWidgetConfig
+} from '../configs/animationConfigs';
 
 const HomePage = () => {
   const [isHeroShown, setIsHeroShown] = useState(false);
@@ -123,6 +106,12 @@ const Navbar = styled.nav`
   display: flex;
   align-items: center;
   gap: 16px;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 `;
 
 const ConnectLink = styled(motion.a)`
@@ -136,6 +125,10 @@ const ConnectLink = styled(motion.a)`
 
   & > * {
     font-family: inherit;
+  }
+
+  @media (max-width: 400px) {
+    margin-left: initial;
   }
 `;
 

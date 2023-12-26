@@ -10,21 +10,9 @@ import Anchor from '../components/Anchor';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
+import { missingBlogPostsConfig } from '../configs/animationConfigs';
 
 const blogs = [];
-
-const missingBlogPostsConfig = {
-  animate: {
-    scale: [1, 1.05, 1, 1.05, 1],
-    x: [0, 15, -15, 15, 0],
-    y: [0, 15, -15, 15, 0],
-    transition: {
-      duration: 10,
-      ease: 'easeInOut',
-      loop: Infinity
-    }
-  }
-};
 
 const BlogPage = () => {
   const [isMobileViewport, setIsViewportSmall] = useState(
@@ -51,18 +39,13 @@ const BlogPage = () => {
         {!isMobileViewport && <Anchor />}
         <MainAreaWrapper>
           {blogs.length === 0 ? (
-            <motion.h1
-              style={{
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
-                marginTop: 250,
-                fontSize: '2rem'
-              }}
+            <EmptyBlogsHeading
               variants={missingBlogPostsConfig}
               initial={{ opacity: 0.7, x: -200 }}
               animate="animate"
             >
               {'Blog posts to be added soon...'}
-            </motion.h1>
+            </EmptyBlogsHeading>
           ) : (
             <BlogPostsWrapper>
               {blogs.map((blog) => (
@@ -89,6 +72,11 @@ const Wrapper = styled(motion.div)`
 
 const StyledBackButton = styled(BackButton)`
   right: 90px;
+
+  @media (max-width: 400px) {
+    top: 90px;
+    left: 50px;
+  }
 `;
 
 const Overlay = styled.div`
@@ -105,6 +93,13 @@ const MainAreaWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 32px;
+`;
+
+const EmptyBlogsHeading = styled(motion.h1)`
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: 250px;
+  font-size: '2rem';
 `;
 
 const BlogPostsWrapper = styled.div`

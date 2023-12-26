@@ -4,7 +4,7 @@ import DeveloperSVG from '../components/svg/DeveloperSVG';
 import Logo from '../components/Logo';
 import BackButton from '../components/BackButton';
 import Particle from '../components/Particle';
-import particleConfig from '../config/particlesjs-config-light.json';
+import particleConfig from '../configs/particlesjs-config-light.json';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
 
@@ -42,8 +42,10 @@ const SkillsPage = () => {
     <>
       <Wrapper variants={animationConfig} initial="hidden" animate="show">
         <Particle config={particleConfig} />
-        <Logo />
-        <BackButton />
+        <Navbar>
+          <Logo />
+          <StyledBackButton />
+        </Navbar>
         <ContentWrapper>
           <Main>
             {skills.map(
@@ -88,9 +90,25 @@ const Wrapper = styled(motion.div)`
   min-height: 100svh;
   padding: 32px;
   position: relative;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Navbar = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+
+  @media (max-width: 400px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+  }
 `;
 
 const ContentWrapper = styled.div`
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -98,7 +116,6 @@ const ContentWrapper = styled.div`
 `;
 
 const Main = styled.div`
-  padding: 32px;
   width: 100%;
   height: 80vh;
   display: flex;
@@ -106,9 +123,9 @@ const Main = styled.div`
   align-items: center;
   gap: 32px;
 
-  @media (max-width: 540px) {
+  @media (max-width: 700px) {
     flex-direction: column;
-    gap: 12px;
+    gap: 32px;
     height: auto;
   }
 `;
@@ -141,6 +158,13 @@ const Section = styled.div`
   @media (max-width: 1000px) {
     width: 100%;
   }
+`;
+
+const StyledBackButton = styled(BackButton)`
+  position: relative;
+  inset: 0;
+  display: inline;
+  transform: initial;
 `;
 
 const Title = styled.h2`

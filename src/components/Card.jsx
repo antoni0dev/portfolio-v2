@@ -74,6 +74,22 @@ const Wrapper = styled(motion.li)`
     color: ${(props) => props.theme.text};
     border: 1px solid ${(props) => props.theme.text};
   }
+
+  @media (max-width: 1280px) {
+    flex-basis: 300px;
+  }
+
+  @media (max-width: 800px) {
+    flex-basis: 270px;
+  }
+
+  @media (max-width: 485px) {
+    flex-basis: 250px;
+  }
+
+  @media (max-width: 380px) {
+    flex-basis: 200px;
+  }
 `;
 
 const Link = styled.a`

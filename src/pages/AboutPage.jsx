@@ -2,11 +2,12 @@ import Logo from '../components/Logo';
 import SocialIcons from '../components/SocialIcons';
 import BackButton from '../components/BackButton';
 import Particle from '../components/Particle';
-import styled, { keyframes, useTheme } from 'styled-components';
-import config from '../config/particlesjs-config.json';
+import styled, { useTheme } from 'styled-components';
+import config from '../configs/particlesjs-config.json';
 import astronautImg from '/images/spaceman.png';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
+import { astronautFloatConfig } from '../configs/animationConfigs';
 
 const AboutPage = () => {
   const theme = useTheme();
@@ -15,7 +16,7 @@ const AboutPage = () => {
     <Wrapper variants={animationConfig} initial="hidden" animate="show">
       <Particle config={config} />
       <StyledLogo />
-      <SocialIcons fillColor={theme.body} />
+      <StyledSocialIcons fillColor={theme.body} />
       <AstronautImage src={astronautImg} alt="astronaut in space" />
       <BackButton fill={theme.body} />
       <ContentWrapper>
@@ -53,22 +54,26 @@ const Wrapper = styled(motion.div)`
   position: relative;
 `;
 
-const astronautFloatConfig = keyframes`
-  0% { transform: translateY(-15px) }
-  50% { transform: translateY(30px) translateX(30px) }
-  100% { transform: translateY(-15px) }
-`;
-
 const AstronautImage = styled.img`
   position: absolute;
-  top: 5%;
+  top: 15%;
   right: 5%;
   width: 25%;
   animation: ${astronautFloatConfig} 3s ease-in-out infinite;
+
+  @media (max-width: 450px) {
+    left: 50%;
+  }
 `;
 
 const StyledLogo = styled(Logo)`
   color: ${(props) => props.theme.body};
+`;
+
+const StyledSocialIcons = styled(SocialIcons)`
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -92,6 +97,15 @@ const ContentWrapper = styled.div`
 
   & * {
     font-family: inherit;
+  }
+
+  @media (max-width: 800px) {
+    padding: 40px;
+  }
+
+  @media (max-width: 640px) {
+    width: 70vw;
+    padding: 32px;
   }
 `;
 
