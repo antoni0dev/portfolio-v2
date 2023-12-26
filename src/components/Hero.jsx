@@ -15,8 +15,7 @@ const Hero = () => {
         <ProfileImg src={profileImg} alt="profile image" />
       </ProfileImageWrapper>
       <IntroductionWrapper {...animationSettings}>
-        <h1>Hi, </h1>
-        <h2>I&apos;m Antonio</h2>
+        <h1>Hey, I&apos;m Antonio</h1>
         <h4>Senior Software Developer and Contractor based in Austria</h4>
         <h6>
           I have been igniting innovation at companies like Nexo, BlueMail, and
@@ -49,6 +48,7 @@ const Wrapper = styled(motion.div)`
         ${(props) => props.theme.text} 50%
       )
       top;
+
   background-repeat: no-repeat;
   background-size: 100% 2px;
 
@@ -61,8 +61,13 @@ const IntroductionWrapper = styled(motion.div)`
   padding: 32px;
   flex: 1;
   color: ${(props) => props.theme.text};
+  overflow-wrap: break-word;
   font-size: 2rem;
   overflow: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
   & > :first-child {
     margin: 0;

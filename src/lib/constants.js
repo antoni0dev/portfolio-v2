@@ -9,13 +9,14 @@ export const PATHS = {
 export const PUBLIC_URLS = {
   github: 'https://github.com/antoni0dev',
   linkedin: 'https://www.linkedin.com/in/antonio-simeonov/',
-  facebook: 'https://www.facebook.com/t0neyy'
+  resume:
+    'https://drive.google.com/file/d/19m4CSIraDhbEWdf7fkenEJ-fp1M6VOh0/view'
 };
 
 export const SOCIAL_URLS = {
   github: PUBLIC_URLS.github,
   linkedin: PUBLIC_URLS.linkedin,
-  facebook: PUBLIC_URLS.facebook
+  resume: PUBLIC_URLS.resume
 };
 
 export const EMAIL = 'antonios.consult@gmail.com';

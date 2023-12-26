@@ -1,4 +1,4 @@
-export const Work = [
+export const workExperiences = [
   {
     id: 1,
     name: 'Nexo Mobile and Web Apps',

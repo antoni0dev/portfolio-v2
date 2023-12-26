@@ -2,7 +2,7 @@ import styled, { useTheme } from 'styled-components';
 import Logo from '../components/Logo';
 import SocialLinks from '../components/SocialIcons';
 import BackButton from '../components/BackButton';
-import { Work } from '../data/WorkData';
+import { workExperiences } from '../data/WorkData';
 import { useEffect, useRef } from 'react';
 import YinYanSVG from '../components/svg/YinYangSVG';
 import Card from '../components/Card';
@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
 
 // TODO: add relevant work
-const works = Work;
+const works = workExperiences;
 
 const WorkPage = () => {
   const theme = useTheme();

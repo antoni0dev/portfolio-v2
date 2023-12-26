@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import GithubSVG from './svg/GithubSVG';
-import FacebookSVG from './svg/FacebookSVG';
-import TwitterSVG from './svg/TwitterSVG';
+import LinkedinSVG from './svg/LinkedinSVG';
 import { SOCIAL_URLS } from '../lib/constants';
 import styled, { useTheme } from 'styled-components';
+import ResumeSVG from './svg/ResumeSVG';
 
 const SOCIAL_LINKS = [
   {
@@ -12,11 +12,11 @@ const SOCIAL_LINKS = [
   },
   {
     url: SOCIAL_URLS.linkedin,
-    icon: TwitterSVG
+    icon: LinkedinSVG
   },
   {
-    url: SOCIAL_URLS.facebook,
-    icon: FacebookSVG
+    url: SOCIAL_URLS.resume,
+    icon: ResumeSVG
   }
 ];
 
