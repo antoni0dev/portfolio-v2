@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import profileImg from '/images/profile.jpeg';
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 const animationSettings = {
   initial: { opacity: 0 },
@@ -9,35 +10,59 @@ const animationSettings = {
 };
 
 const Hero = () => {
+  const [currentViewportWidth, setCurrentViewportWidth] = useState(
+    window.innerWidth
+  );
+
+  console.log('width', currentViewportWidth);
+
+  useEffect(() => {
+    const handleResize = () => setCurrentViewportWidth(window.innerWidth);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <Wrapper {...animationSettings}>
       <ProfileImageWrapper {...animationSettings}>
         <ProfileImg src={profileImg} alt="profile image" />
       </ProfileImageWrapper>
       <IntroductionWrapper {...animationSettings}>
-        <h1>Hey, I&apos;m Antonio</h1>
-        <h4>Senior Software Developer and Contractor based in Austria</h4>
-        <h6>
-          I have been igniting innovation at companies like Nexo, BlueMail, and
-          other tech giants for 9+ Years.
-        </h6>
+        <h1>Hey </h1>
+        {currentViewportWidth >= 500 && <h2>I&apos;m Antonio</h2>}
+        {currentViewportWidth >= 600 && (
+          <h4>Senior Software Developer and Contractor based in Austria</h4>
+        )}
+        {currentViewportWidth >= 700 && (
+          <h6>
+            I have been igniting innovation at companies like Nexo, BlueMail,
+            and other tech giants for 9+ Years.
+          </h6>
+        )}
       </IntroductionWrapper>
     </Wrapper>
   );
 };
 
 const Wrapper = styled(motion.div)`
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 65vw;
+  position: relative;
+  max-width: 65vw;
   max-height: 55vh;
   display: flex;
 
-  /* @media (max-width: ) {
-    
-  } */
+  @media (max-width: 620px) {
+    max-height: 250px;
+  }
+
+  @media (max-width: 550px) {
+    max-height: 180px;
+  }
+
+  @media (max-width: 450px) {
+    max-height: 130px;
+  }
 
   background:
     linear-gradient(
@@ -65,9 +90,9 @@ const IntroductionWrapper = styled(motion.div)`
   padding: 32px;
   flex: 1;
   color: ${(props) => props.theme.text};
+  overflow: auto;
   overflow-wrap: break-word;
   font-size: 2rem;
-  overflow: auto;
 
   display: flex;
   flex-direction: column;
@@ -89,16 +114,10 @@ const IntroductionWrapper = styled(motion.div)`
     font-size: 1.2em;
   }
 
-  @media (max-width: 850px) {
-    font-size: 0.7rem;
-  }
-
-  @media (max-width: 550px) {
-    font-size: 0.4rem;
-  }
-
-  @media (max-width: 550px) {
-    font-size: 0.3rem;
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    width: max-content;
+    overflow: initial;
   }
 `;
 

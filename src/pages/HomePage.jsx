@@ -62,7 +62,11 @@ const HomePage = () => {
           <motion.h2 {...linkAnimationSettings}>Say hi...</motion.h2>
         </ConnectLink>
       </Navbar>
-      {isHeroShown && <Hero />}
+      {isHeroShown && (
+        <HeroWrapper>
+          <Hero />
+        </HeroWrapper>
+      )}
 
       {/* Links and Socials */}
       <BlogLink to={PATHS.blog}>
@@ -106,7 +110,19 @@ const Wrapper = styled(motion.div)`
   padding: 32px;
 `;
 
+const HeroWrapper = styled(motion.div)`
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const Navbar = styled.nav`
+  position: fixed;
+  top: 32;
+  left: 32px;
+  right: 32px;
+  width: 95vw;
   display: flex;
   align-items: center;
   gap: 16px;
