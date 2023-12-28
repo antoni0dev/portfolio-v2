@@ -34,7 +34,7 @@ const Wrapper = styled.div`
 `;
 
 const Line = styled.span`
-  border: 1px solid ${(props) => props.theme.text};
+  border: 1px solid ${(props) => props.theme.colors.text};
   animation: ${playKeyframe} 1s ease infinite;
   animation-play-state: ${(props) => (props.isPlaying ? 'running' : 'paused')};
   height: 16px;

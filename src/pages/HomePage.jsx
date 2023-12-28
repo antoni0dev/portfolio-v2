@@ -5,7 +5,6 @@ import SocialIcons from '../components/SocialIcons';
 import StyledLink from '../components/StyledLink';
 import HeroTriggerButton from '../components/HeroTriggerButton';
 import { useEffect, useState } from 'react';
-import { lightTheme, darkTheme } from '../themes/theme';
 import Hero from '../components/Hero';
 import { motion } from 'framer-motion';
 import SoundWidget from '../components/SoundWidget';
@@ -14,8 +13,10 @@ import {
   linkAnimationSettings,
   soundWidgetConfig
 } from '../configs/animationConfigs';
+import { QUERIES, breakpoints } from '../themes/theme';
 
 const HomePage = () => {
+  console.log('window inner width', window.innerWidth);
   const theme = useTheme();
   const [isHeroShown, setIsHeroShown] = useState(false);
   const { toggleIsPlaying, isPlaying } = useMusicContext();
@@ -42,7 +43,7 @@ const HomePage = () => {
       <HeroTriggerButton
         isClicked={isHeroShown}
         onClick={handleHeroTriggerButtonClick}
-        fill={theme.text}
+        fill={theme.colors.text}
       >
         click me
       </HeroTriggerButton>
@@ -51,7 +52,7 @@ const HomePage = () => {
         <StyledLogo
           isClicked={isHeroShown}
           isVertical={isHeroShown}
-          color={isHeroShown ? darkTheme.text : lightTheme.text}
+          color={isHeroShown ? theme.colors.body : theme.colors.text}
         />
         {!isHeroShown && (
           <motion.div
@@ -67,7 +68,7 @@ const HomePage = () => {
           target="_blank"
           rel="noreferrer"
           href={`mailto:${EMAIL}`}
-          color={isHeroShown ? darkTheme.text : lightTheme.text}
+          color={isHeroShown ? theme.colors.body : theme.colors.text}
         >
           <motion.h2 {...linkAnimationSettings}>Say hi...</motion.h2>
         </ConnectLink>
@@ -83,12 +84,14 @@ const HomePage = () => {
         <motion.h2 {...linkAnimationSettings}>Blog</motion.h2>
       </BlogLink>
       <WorkLink
-        color={isHeroShown ? darkTheme.text : lightTheme.text}
+        color={isHeroShown ? theme.colors.body : theme.colors.text}
         to={PATHS.work}
       >
         <motion.h2 {...linkAnimationSettings}>Work</motion.h2>
       </WorkLink>
-      <SocialIcons fillColor={isHeroShown ? darkTheme.text : lightTheme.text} />
+      <SocialIcons
+        fillColor={isHeroShown ? theme.colors.body : theme.colors.text}
+      />
 
       <Footer>
         <motion.h2 {...linkAnimationSettings}>
@@ -114,13 +117,13 @@ const HomePage = () => {
 };
 
 const Wrapper = styled(motion.div)`
-  background-color: ${(props) => props.theme.body};
+  background-color: ${(props) => props.theme.colors.body};
   height: 100%;
   position: relative;
-  padding: 32px;
+  padding: 16px;
 
-  @media (max-width: 540px) {
-    padding: 16px;
+  @media (${QUERIES.tabletAndUp}) {
+    padding: 32px;
   }
 `;
 
@@ -138,13 +141,13 @@ const Navbar = styled.nav`
   right: 32px;
   width: 95vw;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 16px;
 
-  @media (max-width: 400px) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+  @media (${QUERIES.tabletAndUp}) {
+    flex-direction: row;
+    align-items: center;
   }
 `;
 
@@ -153,7 +156,6 @@ const ConnectLink = styled(motion.a)`
   text-decoration: none;
   font-family: 'Ubuntu Mono', monospace;
   font-weight: bold;
-  margin-left: auto;
   border-bottom: 2px solid ${(props) => props.text};
   border-radius: 2px;
 
@@ -161,8 +163,8 @@ const ConnectLink = styled(motion.a)`
     font-family: inherit;
   }
 
-  @media (max-width: 400px) {
-    margin-left: initial;
+  @media (${QUERIES.tabletAndUp}) {
+    margin-left: auto;
   }
 `;
 
@@ -183,7 +185,7 @@ const WorkLink = styled(StyledLink)`
 `;
 
 const WhoAmIOverlay = styled.div`
-  background-color: ${(props) => props.theme.homepageOverlayBg};
+  background-color: ${(props) => props.theme.colors.text};
   position: absolute;
   top: 0;
   bottom: 0;
@@ -197,18 +199,16 @@ const WhoAmIOverlay = styled.div`
 
 const AboutLink = styled(StyledLink)`
   color: ${(props) =>
-    props.isdarkbackground ? props.theme.body : props.theme.text};
+    props.isdarkbackground ? props.theme.colors.body : props.theme.colors.text};
   transition: color 4s ease;
 `;
 
 const StyledLogo = styled(Logo)`
+  font-size: ${(props) =>
+    props.isClicked && window.innerWidth <= breakpoints.tabletMin && 'revert'};
   position: initial;
   color: ${(props) => props.color};
   transition: color 4s ease;
-
-  @media (max-width: 450px) {
-    font-size: ${(props) => props.isClicked && '1.5rem'};
-  }
 `;
 
 const Footer = styled.footer`

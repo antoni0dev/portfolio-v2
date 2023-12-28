@@ -23,8 +23,8 @@ const BlogPost = ({ name, tags = [], date, imgSrc, link }) => {
 const Wrapper = styled.div`
   width: calc(10rem + 15vw);
   text-decoration: none;
-  color: ${(props) => props.theme.text};
-  border: 2px solid ${(props) => props.theme.text};
+  color: ${(props) => props.theme.colors.text};
+  border: 2px solid ${(props) => props.theme.colors.text};
   backdrop-filter: blur(2px);
   box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 
@@ -32,8 +32,8 @@ const Wrapper = styled.div`
   flex-direction: column;
 
   &:hover {
-    color: ${(props) => props.theme.body};
-    background-color: ${(props) => props.theme.text};
+    color: ${(props) => props.theme.colors.body};
+    background-color: ${(props) => props.theme.colors.text};
     transition: all 0.5s ease;
   }
 `;
@@ -49,7 +49,7 @@ const Title = styled.h3`
   color: inherit;
   font-family: 'Karla', sans-serif;
   font-weight: 700;
-  border-bottom: 1px solid ${(props) => props.theme.text};
+  border-bottom: 1px solid ${(props) => props.theme.colors.text};
 `;
 
 const ContentWrapper = styled.div`

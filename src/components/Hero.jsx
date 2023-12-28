@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import profileImg from '/images/profile.jpeg';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { QUERIES, breakpoints } from '../themes/theme';
 
 const animationSettings = {
   initial: { opacity: 0 },
@@ -13,8 +14,6 @@ const Hero = () => {
   const [currentViewportWidth, setCurrentViewportWidth] = useState(
     window.innerWidth
   );
-
-  console.log('width', currentViewportWidth);
 
   useEffect(() => {
     const handleResize = () => setCurrentViewportWidth(window.innerWidth);
@@ -30,17 +29,26 @@ const Hero = () => {
         <ProfileImg src={profileImg} alt="profile image" />
       </ProfileImageWrapper>
       <IntroductionWrapper {...animationSettings}>
-        <h1>Hey </h1>
-        {currentViewportWidth >= 500 && <h2>I&apos;m Antonio</h2>}
-        {currentViewportWidth >= 600 && (
+        {currentViewportWidth < breakpoints.tabletMin ? (
+          <>
+            <h3>Hey </h3>
+            <h4>I&apos;m Antonio</h4>
+          </>
+        ) : (
+          <>
+            <h1>Hey </h1>
+            <h2>I&apos;m Antonio</h2>
+          </>
+        )}
+        {currentViewportWidth < breakpoints.tabletMin ? (
+          <h5>Senior Software Developer and Contractor based in Austria</h5>
+        ) : (
           <h4>Senior Software Developer and Contractor based in Austria</h4>
         )}
-        {currentViewportWidth >= 700 && (
-          <h6>
-            I have been igniting innovation at companies like Nexo, BlueMail,
-            and other tech giants for 9+ Years.
-          </h6>
-        )}
+        <h6>
+          I have been igniting innovation at companies like Nexo, BlueMail, and
+          other tech giants for 9+ Years.
+        </h6>
       </IntroductionWrapper>
     </Wrapper>
   );
@@ -52,6 +60,7 @@ const Wrapper = styled(motion.div)`
   max-height: 55vh;
   display: flex;
 
+  // Custom media queries for specific design
   @media (max-width: 620px) {
     max-height: 250px;
   }
@@ -67,57 +76,55 @@ const Wrapper = styled(motion.div)`
   background:
     linear-gradient(
         to right,
-        ${(props) => props.theme.body} 50%,
-        ${(props) => props.theme.text} 50%
+        ${(props) => props.theme.colors.body} 50%,
+        ${(props) => props.theme.colors.text} 50%
       )
       bottom,
     linear-gradient(
         to right,
-        ${(props) => props.theme.body} 50%,
-        ${(props) => props.theme.text} 50%
+        ${(props) => props.theme.colors.body} 50%,
+        ${(props) => props.theme.colors.text} 50%
       )
       top;
 
   background-repeat: no-repeat;
   background-size: 100% 2px;
 
-  border-left: 2px solid ${(props) => props.theme.body};
-  border-right: 2px solid ${(props) => props.theme.text};
+  border-left: 2px solid ${(props) => props.theme.colors.body};
+  border-right: 2px solid ${(props) => props.theme.colors.text};
   padding-inline: 12px;
 `;
 
 const IntroductionWrapper = styled(motion.div)`
-  padding: 32px;
+  padding: 8px;
   flex: 1;
-  color: ${(props) => props.theme.text};
+  color: ${(props) => props.theme.colors.text};
   overflow: auto;
-  overflow-wrap: break-word;
-  font-size: 2rem;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+
+  @media (${QUERIES.tabletAndUp}) {
+    padding: 24px;
+    font-size: 1.5rem;
+  }
+
+  @media (${QUERIES.laptopAndUp}) {
+    padding: 32px;
+    font-size: 1.8rem;
+    justify-content: space-between;
+  }
+
+  @media (${QUERIES.desktopAndUp}) {
+    font-size: 2rem;
+    padding: 64px;
+  }
 
   & > :first-child {
     margin: 0;
   }
 
   & > :last-child {
-    color: ${(props) => `rgba(${props.theme.textRgba},0.6)`};
-  }
-
-  @media (max-width: 1250px) {
-    font-size: 1.4em;
-  }
-
-  @media (max-width: 1000px) {
-    font-size: 1.2em;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1rem;
-    width: max-content;
-    overflow: initial;
+    color: ${(props) => `rgba(${props.theme.colors.textRgba},0.6)`};
   }
 `;
 

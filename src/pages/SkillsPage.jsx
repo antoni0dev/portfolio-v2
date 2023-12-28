@@ -7,6 +7,7 @@ import Particle from '../components/Particle';
 import particleConfig from '../configs/particlesjs-config-light.json';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
+import { QUERIES } from '../themes/theme';
 
 const skills = [
   {
@@ -86,7 +87,7 @@ const SkillsPage = () => {
 };
 
 const Wrapper = styled(motion.div)`
-  background-color: ${(props) => props.theme.body};
+  background-color: ${(props) => props.theme.colors.body};
   min-height: 100svh;
   padding: 32px;
   position: relative;
@@ -96,14 +97,15 @@ const Wrapper = styled(motion.div)`
 
 const Navbar = styled.nav`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
   margin-bottom: 24px;
 
-  @media (max-width: 400px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 16px;
+  @media (${QUERIES.tabletAndUp}) {
+    flex-direction: revert;
+    justify-content: space-between;
   }
 `;
 
@@ -117,25 +119,25 @@ const ContentWrapper = styled.div`
 
 const Main = styled.div`
   width: 100%;
-  height: 80vh;
   display: flex;
+  flex-direction: column;
+  height: auto;
   justify-content: space-evenly;
   align-items: center;
   gap: 32px;
 
-  @media (max-width: 700px) {
-    flex-direction: column;
-    gap: 32px;
-    height: auto;
+  @media (${QUERIES.tabletAndUp}) {
+    flex-direction: initial;
+    height: 80vh;
   }
 `;
 
 const Section = styled.div`
   height: 100%;
-  width: 30vw;
-  border: 2px solid ${(props) => props.theme.text};
-  color: ${(props) => props.theme.text};
-  background-color: ${(props) => props.theme.body};
+  width: 100%;
+  border: 2px solid ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.text};
+  background-color: ${(props) => props.theme.colors.body};
   padding: 32px;
   font-family: 'Ubuntu Mono', monospace;
   font-size: 1.2rem;
@@ -146,17 +148,17 @@ const Section = styled.div`
   justify-content: space-evenly;
   gap: 8px;
 
+  @media (${QUERIES.laptopAndUp}) {
+    width: 30vw;
+  }
+
   & * {
     font-family: inherit;
   }
 
   &:hover {
-    color: ${(props) => props.theme.body};
-    background-color: ${(props) => props.theme.text};
-  }
-
-  @media (max-width: 1000px) {
-    width: 100%;
+    color: ${(props) => props.theme.colors.body};
+    background-color: ${(props) => props.theme.colors.text};
   }
 `;
 
@@ -169,13 +171,14 @@ const StyledBackButton = styled(BackButton)`
 
 const Title = styled.h2`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 32px;
 
-  @media (max-width: 800px) {
-    flex-direction: column;
-    justify-content: center;
+  @media (${QUERIES.laptopAndUp}) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   & > :last-child {

@@ -8,6 +8,7 @@ import YinYanSVG from '../components/svg/YinYangSVG';
 import Card from '../components/Card';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
+import { QUERIES } from '../themes/theme';
 
 const works = workExperiences;
 
@@ -63,30 +64,31 @@ const WorkPage = () => {
           <Card key={index} {...currentWork} as="li" />
         ))}
       </HorizontalSlider>
-      <SocialLinks fillColor={theme.body} />
+      <SocialLinks fillColor={theme.colors.body} />
       <RotationWrapper ref={yinyanRef}>
         <YinYanSVG
           width={80}
           height={80}
-          fill={theme.body}
+          fill={theme.colors.body}
           style={{ border: '1px solid black' }}
         />
       </RotationWrapper>
-      <StyledBackButton fill={theme.body} />
+      <StyledBackButton fill={theme.colors.body} />
     </Wrapper>
   );
 };
 
 const Wrapper = styled(motion.div)`
   height: 100%;
-  padding: 32px;
-  background-color: ${(props) => props.theme.text};
+  padding: 16px;
+
+  background-color: ${(props) => props.theme.colors.text};
   display: flex;
   flex-direction: column;
   justify-content: center;
 
-  @media (max-width: 700px) {
-    padding: 16px;
+  @media (${QUERIES.laptopAndUp}) {
+    padding: 32px;
   }
 `;
 
@@ -104,7 +106,7 @@ const HorizontalSlider = styled(motion.div)`
 `;
 
 const StyledLogo = styled(Logo)`
-  color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.colors.body};
   position: fixed;
   top: 32px;
   left: 32px;

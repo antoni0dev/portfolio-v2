@@ -8,6 +8,7 @@ import astronautImg from '/images/spaceman.png';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
 import { astronautFloatConfig } from '../configs/animationConfigs';
+import { QUERIES } from '../themes/theme';
 
 const AboutPage = () => {
   const theme = useTheme();
@@ -16,9 +17,9 @@ const AboutPage = () => {
     <Wrapper variants={animationConfig} initial="hidden" animate="show">
       <Particle config={config} />
       <StyledLogo />
-      <StyledSocialIcons fillColor={theme.body} />
+      <StyledSocialIcons fillColor={theme.colors.body} />
       <AstronautImage src={astronautImg} alt="astronaut in space" />
-      <StyledBackButton fill={theme.body} />
+      <StyledBackButton fill={theme.colors.body} />
       <ContentWrapper>
         <p>
           I am a Full Stack Developer with a rich history in the MERN stack,
@@ -50,7 +51,7 @@ const AboutPage = () => {
 const Wrapper = styled(motion.div)`
   padding: 32px;
   height: 100svh;
-  background-color: ${(props) => props.theme.body};
+  background-color: ${(props) => props.theme.colors.body};
   position: relative;
 `;
 
@@ -60,14 +61,10 @@ const AstronautImage = styled.img`
   right: 5%;
   width: 25%;
   animation: ${astronautFloatConfig} 3s ease-in-out infinite;
-
-  @media (max-width: 450px) {
-    left: 50%;
-  }
 `;
 
 const StyledLogo = styled(Logo)`
-  color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.colors.body};
 `;
 
 const StyledBackButton = styled(BackButton)`
@@ -76,8 +73,10 @@ const StyledBackButton = styled(BackButton)`
 `;
 
 const StyledSocialIcons = styled(SocialIcons)`
-  @media (max-width: 600px) {
-    display: none;
+  display: none;
+
+  @media (${QUERIES.tabletAndUp}) {
+    display: flex;
   }
 `;
 
@@ -85,10 +84,10 @@ const ContentWrapper = styled.div`
   position: absolute;
   left: 15%;
   top: 18%;
-  border: 1px solid ${(props) => props.theme.body};
-  color: ${(props) => props.theme.body};
-  padding: 64px;
-  width: 50vw;
+  border: 1px solid ${(props) => props.theme.colors.body};
+  color: ${(props) => props.theme.colors.body};
+  width: 70vw;
+  padding: 32px;
   line-height: 1.5;
   font-size: 1.4rem;
   font-family: 'Ubuntu Mono', monospace;
@@ -96,21 +95,21 @@ const ContentWrapper = styled.div`
   backdrop-filter: blur(4px);
   overflow: auto;
 
+  @media (${QUERIES.tabletAndUp}) {
+    padding: 40px;
+  }
+
+  @media (${QUERIES.laptopAndUp}) {
+    padding: 64px;
+    width: 50vw;
+  }
+
   & > :not(:first-child) {
     margin-top: 12px;
   }
 
   & * {
     font-family: inherit;
-  }
-
-  @media (max-width: 800px) {
-    padding: 40px;
-  }
-
-  @media (max-width: 640px) {
-    width: 70vw;
-    padding: 32px;
   }
 `;
 

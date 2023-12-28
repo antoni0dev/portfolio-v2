@@ -10,7 +10,7 @@ const StyledLink = ({ to, children, ...rest }) => {
 };
 
 const Wrapper = styled(Link)`
-  color: ${(props) => props.theme.text};
+  color: ${(props) => props.theme.colors.text};
   text-decoration: none;
 `;
 

@@ -10,6 +10,7 @@ import Anchor from '../components/Anchor';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
 import { missingBlogPostsConfig } from '../configs/animationConfigs';
+import { QUERIES } from '../themes/theme';
 
 const blogs = [];
 
@@ -56,16 +57,18 @@ const Wrapper = styled(motion.div)`
 
 const StyledBackButton = styled(BackButton)`
   right: 120px;
+  top: 90px;
+  left: 50px;
   display: inline;
 
-  @media (max-width: 400px) {
-    top: 90px;
-    left: 50px;
+  @media (${QUERIES.tabletAndUp}) {
+    top: revert;
+    left: revert;
   }
 `;
 
 const Overlay = styled.div`
-  background-color: ${(props) => `${props.theme.bodyRgba}`};
+  background-color: ${(props) => `${props.theme.colors.bodyRgba}`};
   width: 100%;
   height: 100%;
   min-height: 100svh;
@@ -89,12 +92,12 @@ const EmptyBlogsHeading = styled(motion.h1)`
 
 const BlogPostsWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr;
   gap: 32px;
   justify-content: center;
 
-  @media (max-width: 600px) {
-    grid-template-columns: 1fr;
+  @media (${QUERIES.tabletAndUp}) {
+    grid-template-columns: repeat(2, 1fr);
   }
 `;
 

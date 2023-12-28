@@ -58,11 +58,11 @@ const Card = ({
 const Wrapper = styled(motion.li)`
   flex: 1 0 350px;
   min-height: 400px;
-  background-color: ${(props) => props.theme.text};
-  color: ${(props) => props.theme.body};
+  background-color: ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.body};
   padding: 24px 32px;
   border-radius: 0 50px 0 50px;
-  border: 1px solid ${(props) => props.theme.body};
+  border: 1px solid ${(props) => props.theme.colors.body};
   transition: all 0.2s ease;
 
   display: flex;
@@ -70,11 +70,12 @@ const Wrapper = styled(motion.li)`
   justify-content: space-between;
 
   &:hover {
-    background-color: ${(props) => props.theme.body};
-    color: ${(props) => props.theme.text};
-    border: 1px solid ${(props) => props.theme.text};
+    background-color: ${(props) => props.theme.colors.body};
+    color: ${(props) => props.theme.colors.text};
+    border: 1px solid ${(props) => props.theme.colors.text};
   }
 
+  // Custom media queries for specific requirements
   @media (max-width: 1280px) {
     flex-basis: 300px;
   }
@@ -93,16 +94,16 @@ const Wrapper = styled(motion.li)`
 `;
 
 const Link = styled.a`
-  background-color: ${(props) => props.theme.body};
-  color: ${(props) => props.theme.text};
+  background-color: ${(props) => props.theme.colors.body};
+  color: ${(props) => props.theme.colors.text};
   text-decoration: none;
   padding: 0.5rem calc(2rem + 2vw);
   border-radius: 0 0 0 50px;
   font-size: calc(1em + 0.5vw);
 
   ${Wrapper}:hover & {
-    background-color: ${(props) => props.theme.text};
-    color: ${(props) => props.theme.body};
+    background-color: ${(props) => props.theme.colors.text};
+    color: ${(props) => props.theme.colors.body};
   }
 `;
 
@@ -117,13 +118,13 @@ const Description = styled.div`
 `;
 
 const Tags = styled.div`
-  border-top: 2px solid ${(props) => props.theme.body};
+  border-top: 2px solid ${(props) => props.theme.colors.body};
   padding-top: 0.5rem;
   display: flex;
   flex-wrap: wrap;
 
   ${Wrapper}:hover & {
-    border-top: 2px solid ${(props) => props.theme.text};
+    border-top: 2px solid ${(props) => props.theme.colors.text};
   }
 `;
 
@@ -178,7 +179,8 @@ const Git = styled.a`
 
   ${Wrapper}:hover & {
     & > * {
-      fill: ${(props) => (props.isValidHref ? props.theme.text : 'gray')};
+      fill: ${(props) =>
+        props.isValidHref ? props.theme.colors.text : 'gray'};
     }
   }
 `;
