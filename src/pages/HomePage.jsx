@@ -16,7 +16,6 @@ import {
 import { QUERIES, breakpoints } from '../themes/theme';
 
 const HomePage = () => {
-  console.log('window inner width', window.innerWidth);
   const theme = useTheme();
   const [isHeroShown, setIsHeroShown] = useState(false);
   const { toggleIsPlaying, isPlaying } = useMusicContext();
@@ -44,9 +43,7 @@ const HomePage = () => {
         isClicked={isHeroShown}
         onClick={handleHeroTriggerButtonClick}
         fill={theme.colors.text}
-      >
-        click me
-      </HeroTriggerButton>
+      />
       <WhoAmIOverlay isShown={isHeroShown} />
       <Navbar>
         <StyledLogo

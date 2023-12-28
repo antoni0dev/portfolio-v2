@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { useTheme } from 'styled-components';
 
 import blogPageCoverImage from '/images/articleCover.jpg';
 
@@ -15,12 +15,14 @@ import { QUERIES } from '../themes/theme';
 const blogs = [];
 
 const BlogPage = () => {
+  const theme = useTheme();
+
   return (
     <Wrapper variants={animationConfig} initial="hidden" animate="show">
       <Overlay>
         <Logo />
         <StyledBackButton />
-        <SocialIcons />
+        <SocialIcons fillColor={theme.colors.text} />
         <Anchor />
         <MainAreaWrapper>
           {blogs.length === 0 ? (

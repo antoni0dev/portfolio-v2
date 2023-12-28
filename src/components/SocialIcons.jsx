@@ -25,7 +25,9 @@ const SocialIcons = ({ fillColor = '', linePosition = 'bottom', ...rest }) => {
 
   return (
     <Wrapper {...rest}>
-      {linePosition === 'top' && <Line fillColor={fillColor || theme.text} />}
+      {linePosition === 'top' && (
+        <Line fillColor={fillColor || theme.colors.text} />
+      )}
       {SOCIAL_LINKS.map(({ url, icon: Icon }, index) => (
         <StyledLink key={index} to={url} target="_blank">
           <Icon
@@ -40,7 +42,7 @@ const SocialIcons = ({ fillColor = '', linePosition = 'bottom', ...rest }) => {
       ))}
 
       {linePosition === 'bottom' && (
-        <Line fillColor={fillColor || theme.text} />
+        <Line fillColor={fillColor || theme.colors.text} />
       )}
     </Wrapper>
   );
