@@ -8,6 +8,7 @@ import particleConfig from '../configs/particlesjs-config-light.json';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
 import { QUERIES } from '../themes/theme';
+import SocialIcons from '../components/SocialIcons';
 
 const skills = [
   {
@@ -81,6 +82,7 @@ const SkillsPage = () => {
             )}
           </Main>
         </ContentWrapper>
+        <SocialIcons />
       </Wrapper>
     </>
   );

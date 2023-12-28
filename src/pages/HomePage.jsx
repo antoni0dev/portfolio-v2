@@ -52,13 +52,13 @@ const HomePage = () => {
           color={isHeroShown ? theme.colors.body : theme.colors.text}
         />
         {!isHeroShown && (
-          <motion.div
+          <SoundWidgetWrapper
             initial="hidden"
             animate="visible"
             variants={soundWidgetConfig}
           >
             <SoundWidget />
-          </motion.div>
+          </SoundWidgetWrapper>
         )}
         <ConnectLink
           isHeroShown={isHeroShown}
@@ -90,7 +90,7 @@ const HomePage = () => {
         fillColor={isHeroShown ? theme.colors.body : theme.colors.text}
       />
 
-      <Footer>
+      <Footer isHeroShown={isHeroShown}>
         <motion.h2 {...linkAnimationSettings}>
           <AboutLink isdarkbackground={isHeroShown} to={PATHS.about}>
             About
@@ -100,13 +100,13 @@ const HomePage = () => {
           <StyledLink to={PATHS.skills}>Skills</StyledLink>
         </motion.h2>
         {isHeroShown && (
-          <motion.div
+          <SoundWidgetWrapper
             initial="hidden"
             animate="visible"
             variants={soundWidgetConfig}
           >
             <SoundWidget />
-          </motion.div>
+          </SoundWidgetWrapper>
         )}
       </Footer>
     </Wrapper>
@@ -172,6 +172,12 @@ const BlogLink = styled(StyledLink)`
   transform: rotate(90deg) translate(-50%, -50%);
 `;
 
+const SoundWidgetWrapper = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const WorkLink = styled(StyledLink)`
   color: ${(props) => props.color};
   position: absolute;
@@ -212,9 +218,9 @@ const Footer = styled.footer`
   position: fixed;
   width: 100%;
   bottom: 32px;
-
   display: flex;
-  justify-content: space-evenly;
+  justify-content: ${(props) =>
+    props.isHeroShown ? 'space-around' : 'space-evenly'};
 `;
 
 export default HomePage;
