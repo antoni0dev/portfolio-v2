@@ -1,6 +1,5 @@
 import styled, { useTheme } from 'styled-components';
 import Logo from '../components/Logo';
-import SocialLinks from '../components/SocialIcons';
 import BackButton from '../components/BackButton';
 import { workExperiences } from '../data/workExperiences';
 import { useEffect, useRef } from 'react';
@@ -9,6 +8,7 @@ import Card from '../components/Card';
 import { motion } from 'framer-motion';
 import { animationConfig } from '../lib/constants';
 import { QUERIES } from '../themes/theme';
+import SocialIcons from '../components/SocialIcons';
 
 const works = workExperiences;
 
@@ -64,7 +64,7 @@ const WorkPage = () => {
           <Card key={index} {...currentWork} as="li" />
         ))}
       </HorizontalSlider>
-      <SocialLinks fillColor={theme.colors.body} />
+      <StyledSocialIcons fillColor={theme.colors.body} />
       <RotationWrapper ref={yinyanRef}>
         <YinYanSVG
           width={80}
@@ -121,6 +121,14 @@ const RotationWrapper = styled.div`
   position: fixed;
   right: 32px;
   bottom: 32px;
+`;
+
+const StyledSocialIcons = styled(SocialIcons)`
+  bottom: -20px;
+
+  @media (${QUERIES.tabletAndUp}) {
+    bottom: 0;
+  }
 `;
 
 export default WorkPage;
