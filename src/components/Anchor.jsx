@@ -1,17 +1,28 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LinkSVG from './svg/LinkSVG';
 import AnchorSVG from './svg/AnchorSVG';
 
+const ANCHOR_HEIGHT = 70;
+const CHAIN_PIECE_LENGTH = 25;
+
+// Hide the anchor + cable so that initially only the anchor is visible
+const MAX_ANCHOR_NEGATIVE_TRANSFORM = -95;
+
 const Anchor = () => {
-  const ref = useRef(null);
-  const [anchorCableLength, setAnchorCableLength] = useState(
-    Math.round((window.innerHeight - 70) / 25)
+  const [anchorCablePieces, setAnchorCablePieces] = useState(
+    Math.floor((window.innerHeight - ANCHOR_HEIGHT) / CHAIN_PIECE_LENGTH)
+  );
+
+  const [anchorTranslateY, setAnchorTranslateY] = useState(
+    MAX_ANCHOR_NEGATIVE_TRANSFORM
   );
 
   useEffect(() => {
     const handleAdjustAnchorCableLength = () =>
-      setAnchorCableLength(parseInt((window.innerHeight - 70) / 25));
+      setAnchorCablePieces(
+        Math.floor((window.innerHeight - ANCHOR_HEIGHT) / CHAIN_PIECE_LENGTH)
+      );
 
     window.addEventListener('resize', handleAdjustAnchorCableLength);
 
@@ -25,13 +36,13 @@ const Anchor = () => {
       const windowSize = window.innerHeight;
       const bodyHeight = document.body.scrollHeight;
 
-      let unscrolledHeight = bodyHeight - (scrollPosition + windowSize);
-      let unscrolledHeightPercentage =
-        (unscrolledHeight * 100) / (bodyHeight - windowSize);
+      let notYetScrolledHeight = bodyHeight - (scrollPosition + windowSize);
+      let newTranslateYValue = Math.max(
+        MAX_ANCHOR_NEGATIVE_TRANSFORM,
+        -(notYetScrolledHeight / (bodyHeight - windowSize)) * 100
+      );
 
-      ref.current.style.transform = `translateY(${
-        -unscrolledHeightPercentage < -92 ? -92 : -unscrolledHeightPercentage
-      }%)`;
+      setAnchorTranslateY(newTranslateYValue);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -40,9 +51,14 @@ const Anchor = () => {
   }, []);
 
   return (
-    <Wrapper ref={ref}>
-      {[...Array(anchorCableLength)].map((_, index) => (
-        <LinkSVG key={index} width={30} height={25} className="chain" />
+    <Wrapper style={{ transform: `translateY(${anchorTranslateY}%)` }}>
+      {[...Array(anchorCablePieces)].map((_, index) => (
+        <LinkSVG
+          key={index}
+          width={30}
+          height={CHAIN_PIECE_LENGTH}
+          className="chain"
+        />
       ))}
       <AnchorSVG width={70} height={70} />
     </Wrapper>
@@ -53,7 +69,7 @@ const Wrapper = styled.div`
   position: fixed;
   top: 0;
   right: 32px;
-  transform: translateY(-92%);
+  transition: transform 0.15s ease;
 
   display: flex;
   flex-direction: column;
