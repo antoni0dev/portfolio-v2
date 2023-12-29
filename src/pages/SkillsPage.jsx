@@ -12,19 +12,6 @@ import SocialIcons from '../components/SocialIcons';
 
 const skills = [
   {
-    titleImg: <FullStackSVG width={100} height={100} />,
-    titleDescription: 'Back-End Development',
-    description:
-      'I love channeling JavaScript finesse into the powerhouse duo of Node.js and Express.',
-    thingsToBuild: [
-      'Efficient Back-End Systems using Node.js',
-      'Scalable Fullstack Architectures',
-      'Custom APIs for versatile web services'
-    ],
-    skills:
-      'Node.js, Express, MongoDB, API development and management, Performance, Optimization'
-  },
-  {
     titleImg: <DeveloperSVG width={75} height={75} />,
     titleDescription: 'Front-End Development',
     description:
@@ -36,6 +23,19 @@ const skills = [
     ],
     skills:
       'React.js, Next.js, TypeScript, Redux, Zustand, React Query, RTKQ, styled-components, Material UI'
+  },
+  {
+    titleImg: <FullStackSVG width={100} height={100} />,
+    titleDescription: 'Back-End Development',
+    description:
+      'I love channeling JavaScript finesse into the powerhouse duo of Node.js and Express.',
+    thingsToBuild: [
+      'Efficient Back-End Systems using Node.js',
+      'Scalable Fullstack Architectures',
+      'Custom APIs for versatile web services'
+    ],
+    skills:
+      'Node.js, Express, MongoDB, API development and management, Performance, Optimization'
   }
 ];
 

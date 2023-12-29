@@ -22,26 +22,26 @@ const AboutPage = () => {
       <StyledBackButton fill={theme.colors.body} />
       <ContentWrapper>
         <p>
-          I am a Full Stack Developer with a rich history in the MERN stack,
-          bringing over 9 years of experience in developing advanced web and
-          mobile applications. Based in Austria, my career has been marked by
-          engagements with leading tech firms including Nexo, Bluemail, and
-          EasyPay.
+          Hey there! I&apos;m deeply rooted in the React and React Native world,
+          with a journey spanning 9 years in making the web and mobile spaces
+          more innovative, dynamic and accessible. Living in Austria, I&apos;ve
+          had the pleasure of collaborating with awesome teams at Nexo,
+          Bluemail, and EasyPay.
         </p>
         <p>
-          In my role, I blend creativity with technical acumen, focusing on
-          delivering high-quality, efficient solutions. My portfolio spans a
-          range of complex projects, showcasing a balance of front-end finesse
-          and robust back-end functionalities.
+          What sets my work apart? It&apos;s not just about coding for me.
+          It&apos;s about creating something that catches your the and feels
+          right at the fingertips. My projects are a mix of my love for sleek
+          design and the thrill of solving complex technical puzzles.
         </p>
         <p>
-          As an independent freelancer and a thought leader in the tech space, I
-          contribute insights through my blogs, sharing lessons and trends in
-          full stack development.
+          I love write performant and clean code but I also love to collaborate
+          with other programmers and I have a strong background of working in
+          multinational and multi-ethnic teams.
         </p>
         <p>
-          Connect with me to discuss innovative solutions or for insights into
-          modern development practices in the evolving tech landscape.
+          Connect with me to discuss B2B contract opportunities or any other
+          professional collaborations.
         </p>
       </ContentWrapper>
     </Wrapper>
