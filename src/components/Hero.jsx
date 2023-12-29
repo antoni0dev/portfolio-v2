@@ -41,7 +41,7 @@ const Hero = () => {
           </>
         )}
         {currentViewportWidth < breakpoints.tabletMin ? (
-          <h5>Senior Software Developer and Contractor based in Austria</h5>
+          <h5>Senior Front-End Developer and Contractor based in Austria</h5>
         ) : (
           <h4>Senior Front-End Developer and Contractor based in Austria</h4>
         )}
