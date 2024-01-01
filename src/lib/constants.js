@@ -11,8 +11,7 @@ export const PATHS = {
 export const PUBLIC_URLS = {
   github: 'https://github.com/antoni0dev',
   linkedin: 'https://www.linkedin.com/in/antonio-simeonov/',
-  resume:
-    'https://drive.google.com/file/d/19m4CSIraDhbEWdf7fkenEJ-fp1M6VOh0/view'
+  resume: 'https://resume.io/r/jNGPhKqO3'
 };
 
 export const SOCIAL_URLS = {

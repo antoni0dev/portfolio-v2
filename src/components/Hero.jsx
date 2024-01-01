@@ -59,19 +59,7 @@ const Wrapper = styled(motion.div)`
   max-width: 65vw;
   max-height: 55vh;
   display: flex;
-
-  // Custom media queries for specific design
-  @media (max-width: 620px) {
-    max-height: 250px;
-  }
-
-  @media (max-width: 550px) {
-    max-height: 180px;
-  }
-
-  @media (max-width: 450px) {
-    max-height: 130px;
-  }
+  max-height: min(55vh, 550px);
 
   background:
     linear-gradient(
@@ -102,20 +90,18 @@ const IntroductionWrapper = styled(motion.div)`
   overflow: auto;
   display: flex;
   flex-direction: column;
+  font-size: clamp(1rem, 2vw + 1rem, 2rem);
 
   @media (${QUERIES.tabletAndUp}) {
     padding: 24px;
-    font-size: 1.5rem;
   }
 
   @media (${QUERIES.laptopAndUp}) {
     padding: 32px;
-    font-size: 1.8rem;
     justify-content: space-between;
   }
 
   @media (${QUERIES.desktopAndUp}) {
-    font-size: 2rem;
     padding: 64px;
   }
 
