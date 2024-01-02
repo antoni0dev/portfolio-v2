@@ -47,7 +47,7 @@ const Hero = () => {
         )}
         <h6>
           I have been igniting innovation at companies like Nexo, BlueMail, and
-          other tech giants for 9+ Years.
+          other tech giants for 8+ Years.
         </h6>
       </IntroductionWrapper>
     </Wrapper>
