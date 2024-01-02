@@ -23,7 +23,7 @@ const AboutPage = () => {
       <ContentWrapper>
         <p>
           Hey there! I&apos;m deeply rooted in the React and React Native world,
-          with a journey spanning 9 years in making the web and mobile spaces
+          with a journey spanning 8+ years in making the web and mobile spaces
           more innovative, dynamic and accessible. Living in Austria, I&apos;ve
           had the pleasure of collaborating with awesome teams at Nexo,
           Bluemail, and EasyPay.
