@@ -1,8 +1,18 @@
 import styled from 'styled-components';
 import YinYangSVG from './svg/YinYangSVG';
 import { heroTriggerButtonRotate } from '../lib/constants';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const HeroTriggerButton = ({ isClicked, onClick, fill }) => {
+  const [hasNotPlayed, setHasNotPlayed] = useState(true);
+
+  useEffect(() => {
+    if (isClicked && hasNotPlayed) {
+      setHasNotPlayed(false);
+    }
+  }, [isClicked, hasNotPlayed]);
+
   return (
     <Wrapper isClicked={isClicked} onClick={onClick}>
       <YinYangSVG
@@ -10,6 +20,7 @@ const HeroTriggerButton = ({ isClicked, onClick, fill }) => {
         height={isClicked ? 120 : 200}
         fill={fill}
       />
+      {!isClicked && hasNotPlayed && <p>Welcome, click me!</p>}
     </Wrapper>
   );
 };

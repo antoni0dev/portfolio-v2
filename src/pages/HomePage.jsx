@@ -32,7 +32,7 @@ const HomePage = () => {
 
   // Trigger a redeploy of a shutted-down project deployed on Render.js
   useEffect(() => {
-  (async () => {
+    (async () => {
       await fetch('https://proshop-59ue.onrender.com', { mode: 'no-cors' });
     })();
   }, []);
